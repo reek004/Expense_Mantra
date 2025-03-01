@@ -1,6 +1,7 @@
+import express from 'express';
 import cors from 'cors';
 import http from 'http';
-import express from 'express';
+import dotenv from 'dotenv';
 
 
 
@@ -11,6 +12,10 @@ import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHt
 
 import mergedResolvers from "./resolvers/merger.js";
 import mergedTypeDefs from "./typeDefs/merger.js";
+
+import connectDB  from "./db/connectDB.js";
+
+dotenv.config();
 
 const app = express();
 // Our httpServer handles incoming requests to our Express app.
@@ -41,4 +46,5 @@ app.use(
 await new Promise((resolve) =>
   httpServer.listen({ port: 4000 }, resolve),
 );
+await connectDB();
 console.log(`🚀 Server ready at http://localhost:4000/`);
