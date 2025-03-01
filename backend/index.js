@@ -3,6 +3,9 @@ import cors from 'cors';
 import http from 'http';
 import dotenv from 'dotenv';
 
+import passport from 'passport';
+import session from 'express-session';
+import connectMongo from 'connect-mongodb-session';
 
 
 import { ApolloServer } from "@apollo/server";
@@ -22,6 +25,31 @@ const app = express();
 // Below, we tell Apollo Server to "drain" this httpServer,
 // enabling our servers to shut down gracefully.
 const httpServer = http.createServer(app);
+
+const MongoDBStore = connectMongo(session);
+const store = new MongoDBStore({
+  uri: process.env.MONGO_URI,
+  collection: 'sessions',
+});
+
+store.on('error',(error) => console.log(error));
+
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: store,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
+      httpOnly: true,
+    },
+  })
+)
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 const server = new ApolloServer({
 	typeDefs: mergedTypeDefs,
