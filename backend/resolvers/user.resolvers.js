@@ -1,10 +1,10 @@
 import { users } from '../dummyData/data.js';
 const userResolver = {
     Query: {
-        users: () => {
+        users: ({}) => {
             return users;
         },
-        user: (_,{userId}) => {
+        user: (_,{userId},{req,res}) => {
             return users.find(user => user._id === userId);
         }
     },
