@@ -11,7 +11,6 @@ const userTypeDef = `#graphql
   type Query {
     users: [User!]
     authUser: User
-    user(userId: ID!): User
   }
 
   type Mutation {
@@ -21,21 +20,22 @@ const userTypeDef = `#graphql
     updateUser(input: UpdateUser): User
   }
   input SignUpInput {
+    username: String!
     name: String!
     email: String!
     password: String!
     gender: String
   }
   input LoginInput {
-    email: String!
+    username: String!
     password: String!
   }
   input UpdateUser {
+    username: String!
     name: String!
     email: String!
     password: String!
-  }
-  
+  }  
   type logoutResponse {
     message: String!
   }

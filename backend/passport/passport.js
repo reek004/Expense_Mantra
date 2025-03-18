@@ -1,6 +1,6 @@
 import passport from "passport";
 import bcrypt from "bcryptjs";
-import User from "../models/user.resolver.js";
+import User from "../resolvers/user.resolvers.js";
 import { GraphQLLocalStrategy } from "graphql-passport";
 
 export const passportConfig = async () => {
@@ -43,3 +43,5 @@ export const passportConfig = async () => {
         })
       );
 };
+
+export default passportConfig;
