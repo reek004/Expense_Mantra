@@ -1,9 +1,9 @@
 import cron from "cron";
 import https from "https";
 
-const URL = "https://graphql-crash-course.onrender.com";
+const URL = "https://expense-mantra.onrender.com";
 
-const job = new cron.CronJob("*/14 * * * *", function () {
+const job = new cron.CronJob("* 0 * * * *", function () {
 	https
 		.get(URL, (res) => {
 			if (res.statusCode === 200) {
@@ -23,8 +23,7 @@ export default job;
 // Cron jobs are scheduled tasks that run periodically at fixed intervals or specific times
 // send 1 GET request for every 14 minutes
 
-// Schedule:
-// You define a schedule using a cron expression, which consists of five fields representing:
+
 
 //! MINUTE, HOUR, DAY OF THE MONTH, MONTH, DAY OF THE WEEK
 
