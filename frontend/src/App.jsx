@@ -7,9 +7,12 @@ import NotFound from '../pages/NotFound';
 import Header from './components/ui/Header';
 
 function App() {
+  const authUser = true;
+  
+
   return (
     <>
-      <Header />
+      { authUser && <Header />}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
