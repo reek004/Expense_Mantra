@@ -42,7 +42,7 @@ const HomePage = () => {
 		labels: [],
 		datasets: [
 			{
-				label: "$",
+				label: "₹",
 				data: [],
 				backgroundColor: [],
 				borderColor: [],
@@ -63,7 +63,7 @@ const HomePage = () => {
 			const borderColors = [];
 
 			categories.forEach((category) => {
-				if (category === "saving") {
+				if (category === "income") {
 					backgroundColors.push("rgba(75, 192, 192)");
 					borderColors.push("rgba(75, 192, 192)");
 				} else if (category === "expense") {
