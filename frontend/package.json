@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "@apollo/client": "^3.13.5",
+    "@tailwindcss/postcss": "^4.0.17",
     "@tailwindcss/vite": "^4.0.14",
+    "autoprefixer": "^10.4.21",
     "graphql": "^16.10.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
